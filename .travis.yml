@@ -8,9 +8,6 @@ install:
     - pip install braintree coveralls mock mysqlclient
 env:
   - DB=postgres
-addons:
-  postgresql: "9.4"
-  postgresql: "9.6"
 script:
   - coverage run manage.py test
 before_install:
