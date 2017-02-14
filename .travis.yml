@@ -3,11 +3,17 @@ python:
   - "2.7"
   - "3.4"
   - "3.6"
+
 install:
     - pip install -r requirements.txt
     - pip install braintree coveralls mock mysqlclient
 env:
   - DB=postgres
+
+addons:
+  postgresql: "9.4"
+  postgresql: "9.6"
+  
 script:
   - coverage run manage.py test
 before_install:
