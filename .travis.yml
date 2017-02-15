@@ -7,8 +7,6 @@ install:
     - pip install -r requirements.txt
     - pip install braintree coveralls mock mysqlclient
 env:
-  - DB=sqlite
-  - DB=mysql
   - DB=postgres
 script:
   - coverage run manage.py test
