@@ -33,7 +33,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'compressor',
     'djmail',
-
     'hc.accounts',
     'hc.api',
     'hc.front',
@@ -53,7 +52,8 @@ MIDDLEWARE = (
 
 AUTHENTICATION_BACKENDS = (
     'hc.accounts.backends.EmailBackend',
-    'hc.accounts.backends.ProfileBackend'
+    'hc.accounts.backends.ProfileBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
 )
 
 ROOT_URLCONF = 'hc.urls'
@@ -148,8 +148,8 @@ PUSHOVER_EMERGENCY_EXPIRATION = 86400
 # Pushbullet integration -- override these in local_settings
 PUSHBULLET_CLIENT_ID = None
 PUSHBULLET_CLIENT_SECRET = None
-
-if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
-    from .local_settings import *
-else:
-    warnings.warn("local_settings.py not found, using defaults")
+#
+# if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
+#     from .local_settings import *
+# else:
+#     warnings.warn("local_settings.py not found, using defaults")
