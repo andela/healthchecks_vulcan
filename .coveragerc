@@ -1,6 +1,13 @@
 # .coveragerc to control coverage.py
 [run]
 branch = True
+omit =
+    #omit anything in .local directory anywhere
+    */.local/*
+    #omit everything in /usr
+    */usr/*
+    #omit everthing in /Users
+    */Users/*
 
 source =
     .
