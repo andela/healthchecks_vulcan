@@ -2,7 +2,7 @@ language: python
 python:
   - "2.7"
   - "3.4"
-  - "3.6
+  - "3.6"
 install:
     - pip install -r requirements.txt
     - pip install braintree coveralls mock mysqlclient
@@ -11,6 +11,9 @@ env:
   - DB=mysql
   - DB=postgres
 script:
-  - coverage run --omit=*/tests/* --source=hc manage.py test
-after_success: coveralls
+  - coverage run manage.py test
+before_install:
+    - pip install coveralls
+after_success:
+    -coveralls
 cache: pip
