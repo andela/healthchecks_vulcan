@@ -1,1 +1,1 @@
-web: gunicorn healthchecks-vulcan.wsgi
+web: gunicorn hc.wsgi
