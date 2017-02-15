@@ -25,5 +25,8 @@ omit =
 ignore_errors = True
 
 [html]
+#Directory to hold html coverage report
+
 directory = coverage_html_report
+
 
