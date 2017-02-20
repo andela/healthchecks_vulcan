@@ -1,6 +1,6 @@
-machine:
-  post:
-    - pyenv global 2.7.13 3.6.0
-test:
-  pre:
-    - ./manage.py collectstatic --no-input
+machine:                                                                                                                                                                 
+  pre:                                                                                                                                                                   
+    - cd /opt/circleci/.pyenv; git pull                                                                                                                                  
+  python:                                                                                                                                                                
+    version: 3.6.0
+
