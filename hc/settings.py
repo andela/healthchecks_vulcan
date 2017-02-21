@@ -15,7 +15,7 @@ import warnings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-HOST = "localhost"
+HOST = "healthchecks-vulcan.herokuapp.com"
 SECRET_KEY = "---"
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -121,7 +121,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SITE_ROOT = "http://localhost:8000"
+SITE_ROOT = "http://healthchecks-vulcan.herokuapp.com"
 PING_ENDPOINT = SITE_ROOT + "/ping/"
 PING_EMAIL_DOMAIN = HOST
 STATIC_URL = '/static/'
