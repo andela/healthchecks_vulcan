@@ -8,6 +8,8 @@ source =
 omit =
 # omit all tests
     */tests/*
+    */migrations/*
+    */virtualenv/*
     hc/test.py
 
 [report]
