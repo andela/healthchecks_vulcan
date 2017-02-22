@@ -33,13 +33,22 @@ class ListChecksTestCase(BaseTestCase):
 
     def test_it_works(self):
         r = self.get()
-        ### Assert the response status code
+        self.assertEqual(r.status_code, 200)# Assert the response status code
 
         doc = r.json()
         self.assertTrue("checks" in doc)
 
         checks = {check["name"]: check for check in doc["checks"]}
-        ### Assert the expected length of checks
+        self.assertEqual(len(checks), 2)# Assert the expected length of checks
+        self.assertEqual(checks["Alice 1"]["timeout"], 3600)
+        self.assertEqual(checks["Alice 1"]["grace"], 900)
+        self.assertEqual(checks["Alice 1"]["ping_url"], self.a1.url())
+        self.assertEqual(checks["Alice 1"]["last_ping"], self.now.isoformat())
+        self.assertEqual(checks["Alice 1"]["n_pings"], 1)
+        self.assertEqual(checks["Alice 1"]["status"], "new")
+
+        pause_url = update_url + "/pause"
+        self.assertEqual(checks["Alice 1"]["pause_url"], pause_url)
         ### Assert the checks Alice 1 and Alice 2's timeout, grace, ping_url, status,
         ### last_ping, n_pings and pause_url
 
@@ -53,4 +62,8 @@ class ListChecksTestCase(BaseTestCase):
         for check in data["checks"]:
             self.assertNotEqual(check["name"], "Bob 1")
 
-    ### Test that it accepts an api_key in the request
+    def test_it_accepts_api_key_from_request_body(self):# Test that it accepts an api_key in the request
+        payload = json.dumps({"api_key": "abc"})
+        r = self.client.generic("GET", "/api/v1/checks/", payload, content_type="application/json")
+        self.assertEqual(r.status_code, 200)
+        self.assertContains(r, "Alice")
