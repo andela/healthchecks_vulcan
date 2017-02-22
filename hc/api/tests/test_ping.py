@@ -1,5 +1,5 @@
 from django.test import Client, TestCase
-
+from hc.test import BaseTestCase
 from hc.api.models import Check, Ping
 
 
@@ -50,6 +50,8 @@ class PingTestCase(TestCase):
                             HTTP_X_FORWARDED_FOR=ip)
         ping = Ping.objects.latest("id")
         ### Assert the expected response status code and ping's remote address
+        assert r.status_code == 200
+        assert ping.remote_addr == "1.1.1.1"
 
         ip = "1.1.1.1, 2.2.2.2"
         r = self.client.get("/ping/%s/" % self.check.code,
@@ -63,11 +65,30 @@ class PingTestCase(TestCase):
                             HTTP_X_FORWARDED_PROTO="https")
         ping = Ping.objects.latest("id")
         ### Assert the expected response status code and ping's scheme
+        assert r.status_code == 200
+        assert ping.scheme == "https"
 
     def test_it_never_caches(self):
         r = self.client.get("/ping/%s/" % self.check.code)
         assert "no-cache" in r.get("Cache-Control")
 
     ### Test that when a ping is made a check with a paused status changes status
+    def test_paused_check_status_changes_on_ping(self):
+        self.check.status = "paused"
+
+        self.client.get("/ping/%s/" % self.check.code)
+        self.check.refresh_from_db()
+
+        assert self.check.status == "up"
+
     ### Test that a post to a ping works
+    def test_post_to_ping_works(self):
+        r = self.client.get("/ping/%s/" % self.check.code)
+        assert r.status_code == 200
+
     ### Test that the csrf_client head works
+    def test_csrf_client_head(self):
+        # Use an unregistered sig
+        r = self.client.get("/badge/alice/12345670/foo.svg")
+        assert r.status_code == 400
+
