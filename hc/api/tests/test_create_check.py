@@ -19,9 +19,9 @@ class CreateCheckTestCase(BaseTestCase):
             self.assertEqual(r.json()["error"], expected_error)
 
         if expected_fragment:
-        	self.assertEqual(r.status_code, 400)
-        	self.assertIn(expected_fragment, r.json()["error"])
-        	
+            self.assertEqual(r.status_code, 400)
+            self.assertIn(expected_fragment, r.json()["error"])
+
         return r
 
     def test_it_works(self):

@@ -106,6 +106,18 @@ class NotifyTestCase(BaseTestCase):
         
         self.channel.notify(self.check)
 
+    def test_webhooks_handle_connection_errors(self, mock_get):#Test that the web hooks handle connection errors 
+        self._setup_data("webhook", "http://andela")
+        self.channel.notify(self.check)
+        n = Notification.objects.get()
+        self.assertEqual(n.error, "Connection failed")
+
+    def test_webhooks_handle_500(self, mock_get):# test that web hook handles error 500s
+        self._setup_data("webhook", "http://andela")
+        mock_get.return_value.status_code = 500
+        
+        self.channel.notify(self.check)
+
         n = Notification.objects.get()
         self.assertEqual(n.error, "Received status code 500")
         
