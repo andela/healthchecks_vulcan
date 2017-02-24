@@ -18,3 +18,5 @@ class AddCheckTestCase(BaseTestCase):
         r = self.client.post(url)
         self.assertRedirects(r, "/checks/")
         assert Check.objects.count() == 1
+
+     
