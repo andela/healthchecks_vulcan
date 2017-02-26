@@ -10,7 +10,7 @@ class CreateCheckTestCase(BaseTestCase):
     def setUp(self):
         super(CreateCheckTestCase, self).setUp()
 
-    def post(self, data, expected_error=None):
+    def post(self, data, expected_error=None, expected_fragment=None):
         r = self.client.post(self.URL, json.dumps(data),
                              content_type="application/json")
 
@@ -18,6 +18,10 @@ class CreateCheckTestCase(BaseTestCase):
             self.assertEqual(r.status_code, 400)
             self.assertEqual(r.json()["error"], expected_error)
 
+        if expected_fragment:
+        	self.assertEqual(r.status_code, 400)
+        	self.assertIn(expected_fragment, r.json()["error"])
+        	
         return r
 
     def test_it_works(self):
