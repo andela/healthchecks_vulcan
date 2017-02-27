@@ -8,14 +8,11 @@ omit =
     */usr/*
     #omit everthing in /Users
     */Users/*
-
+    */tests/*
+    *virtualenv/*
+    */env/*
 source =
     .
-
-omit =
-# omit all tests
-    */tests/*
-    hc/test.py
 
 [report]
 ignore_errors = True
