@@ -13,165 +13,167 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import warnings
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if os.environ.get('DEBUG'):
 
-HOST = "healthchecks-vulcan.herokuapp.com"
-SECRET_KEY = "---"
-DEBUG = True
-ALLOWED_HOSTS = []
-hFROM_EMAIL = 'healthchecks@example.org'
-USE_PAYMENTS = False
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    HOST = "healthchecks-vulcan.herokuapp.com"
+    SECRET_KEY = "---"
+    DEBUG = True
+    ALLOWED_HOSTS = []
+    hFROM_EMAIL = 'healthchecks@example.org'
+    USE_PAYMENTS = False
 
 
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.humanize',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'compressor',
-    'djmail',
+    INSTALLED_APPS = (
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.humanize',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'compressor',
+        'djmail',
 
-    'hc.accounts',
-    'hc.api',
-    'hc.front',
-    'hc.payments'
-)
+        'hc.accounts',
+        'hc.api',
+        'hc.front',
+        'hc.payments'
+    )
 
-MIDDLEWARE = (
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'hc.accounts.middleware.TeamAccessMiddleware',
-)
+    MIDDLEWARE = (
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'hc.accounts.middleware.TeamAccessMiddleware',
+    )
 
-AUTHENTICATION_BACKENDS = (
-    'hc.accounts.backends.EmailBackend',
-    'hc.accounts.backends.ProfileBackend'
-)
+    AUTHENTICATION_BACKENDS = (
+        'hc.accounts.backends.EmailBackend',
+        'hc.accounts.backends.ProfileBackend'
+    )
 
-ROOT_URLCONF = 'hc.urls'
+    ROOT_URLCONF = 'hc.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'hc.payments.context_processors.payments'
-            ],
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [os.path.join(BASE_DIR, 'templates')],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    'hc.payments.context_processors.payments'
+                ],
+            },
         },
-    },
-]
+    ]
 
-WSGI_APPLICATION = 'hc.wsgi.application'
-TEST_RUNNER = 'hc.api.tests.CustomRunner'
+    WSGI_APPLICATION = 'hc.wsgi.application'
+    TEST_RUNNER = 'hc.api.tests.CustomRunner'
 
 
-# Default database engine is SQLite. So one can just check out code,
-# install requirements.txt and do manage.py runserver and it works
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':   './hc.sqlite',
-    }
-}
-
-# You can switch database engine to postgres or mysql using environment
-# variable 'DB'. Travis CI does this.
-if os.environ.get("DB") == "postgres":
+    # Default database engine is SQLite. So one can just check out code,
+    # install requirements.txt and do manage.py runserver and it works
     DATABASES = {
         'default': {
-            'ENGINE':   'django.db.backends.postgresql',
-            'NAME':     'hc',
-            'USER':     'postgres',
-            'TEST': {'CHARSET': 'UTF8'}
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME':   './hc.sqlite',
         }
     }
 
-if os.environ.get("DB") == "mysql":
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'USER':     'root',
-            'NAME':     'hc',
-            'TEST': {'CHARSET': 'UTF8'}
+    # You can switch database engine to postgres or mysql using environment
+    # variable 'DB'. Travis CI does this.
+    if os.environ.get("DB") == "postgres":
+        DATABASES = {
+            'default': {
+                'ENGINE':   'django.db.backends.postgresql',
+                'NAME':     'hc',
+                'USER':     'postgres',
+                'TEST': {'CHARSET': 'UTF8'}
+            }
         }
-    }
 
-LANGUAGE_CODE = 'en-us'
+    if os.environ.get("DB") == "mysql":
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'USER':     'root',
+                'NAME':     'hc',
+                'TEST': {'CHARSET': 'UTF8'}
+            }
+        }
 
-TIME_ZONE = 'UTC'
+    LANGUAGE_CODE = 'en-us'
 
-USE_I18N = True
+    TIME_ZONE = 'UTC'
 
-USE_L10N = True
+    USE_I18N = True
 
-USE_TZ = True
+    USE_L10N = True
 
-SITE_ROOT = "http://healthchecks-vulcan.herokuapp.com"
-PING_ENDPOINT = SITE_ROOT + "/ping/"
-PING_EMAIL_DOMAIN = HOST
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
-COMPRESS_OFFLINE = True
+    USE_TZ = True
 
-EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
+    SITE_ROOT = "http://healthchecks-vulcan.herokuapp.com"
+    PING_ENDPOINT = SITE_ROOT + "/ping/"
+    PING_EMAIL_DOMAIN = HOST
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
+    STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'compressor.finders.CompressorFinder',
+    )
+    COMPRESS_OFFLINE = True
 
-# Slack integration -- override these in local_settings
-SLACK_CLIENT_ID = None
-SLACK_CLIENT_SECRET = None
+    EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
 
-# Pushover integration -- override these in local_settings
-PUSHOVER_API_TOKEN = None
-PUSHOVER_SUBSCRIPTION_URL = None
-PUSHOVER_EMERGENCY_RETRY_DELAY = 300
-PUSHOVER_EMERGENCY_EXPIRATION = 86400
+    # Slack integration -- override these in local_settings
+    SLACK_CLIENT_ID = None
+    SLACK_CLIENT_SECRET = None
 
-# Pushbullet integration -- override these in local_settings
-PUSHBULLET_CLIENT_ID = None
-PUSHBULLET_CLIENT_SECRET = None
+    # Pushover integration -- override these in local_settings
+    PUSHOVER_API_TOKEN = None
+    PUSHOVER_SUBSCRIPTION_URL = None
+    PUSHOVER_EMERGENCY_RETRY_DELAY = 300
+    PUSHOVER_EMERGENCY_EXPIRATION = 86400
 
-if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
-    from .local_settings import *
-else:
-    warnings.warn("local_settings.py not found, using defaults")
+    # Pushbullet integration -- override these in local_settings
+    PUSHBULLET_CLIENT_ID = None
+    PUSHBULLET_CLIENT_SECRET = None
 
-#-----------------FOR HEROKU--------------------# Might breakdown app
+    if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
+        from .local_settings import *
+    else:
+        warnings.warn("local_settings.py not found, using defaults")
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+if os.environ.get('HEROKU'):
 
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # Parse database configuration from $DATABASE_URL
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Static asset configuration
-# import os
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
-# STATIC_URL = '/static/'
-#
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+    # Allow all host headers
+    ALLOWED_HOSTS = ['*']
+
+    DJMAIL_REAL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS"))
+    EMAIL_HOST = os.environ.get("EMAIL_HOST")
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT"))
+
+    SITE_ROOT = 'http://healthchecks-vulcan.herokuapp.com'
+    HOST = 'healthchecks-vulcan.herokuapp.com'
