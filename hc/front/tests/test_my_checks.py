@@ -59,6 +59,4 @@ class MyChecksTestCase(BaseTestCase):
         # Mobile
         self.assertContains(r, "label-warning")
         
-    def test_it_redirects_to_hc_checks(self):
-        response = self.client.login(username="alice@example.org", password="password")
-        self.assertRedirects(response, "hc-checks")
+    
