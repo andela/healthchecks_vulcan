@@ -21,7 +21,7 @@ if os.environ.get('DEBUG'):
     SECRET_KEY = "---"
     DEBUG = True
     ALLOWED_HOSTS = []
-    hFROM_EMAIL = 'healthchecks@example.org'
+    FROM_EMAIL = 'healthchecks@example.org'
     USE_PAYMENTS = False
 
 
