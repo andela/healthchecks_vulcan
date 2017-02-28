@@ -1,0 +1,1160 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">64%</span>
+        </h1>
+
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        
+        <span class="key">b</span>
+        <span class="key">p</span>
+        
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+
+<div id="index">
+    <table class="index">
+        <thead>
+            
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                
+                <th class="shortkey_b">branches</th>
+                <th class="shortkey_p">partial</th>
+                
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>1907</td>
+                <td>601</td>
+                <td>0</td>
+                
+                <td>449</td>
+                <td>53</td>
+                
+                <td class="right" data-ratio="1508 2356">64%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc___init___py.html">hc/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts___init___py.html">hc/accounts/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_admin_py.html">hc/accounts/admin.py</a></td>
+                <td>49</td>
+                <td>22</td>
+                <td>0</td>
+                
+                <td>14</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="29 63">46%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_backends_py.html">hc/accounts/backends.py</a></td>
+                <td>28</td>
+                <td>7</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>2</td>
+                
+                <td class="right" data-ratio="23 32">72%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_forms_py.html">hc/accounts/forms.py</a></td>
+                <td>18</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 18">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_management___init___py.html">hc/accounts/management/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_management_commands___init___py.html">hc/accounts/management/commands/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_management_commands_pruneusers_py.html">hc/accounts/management/commands/pruneusers.py</a></td>
+                <td>17</td>
+                <td>17</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 17">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_middleware_py.html">hc/accounts/middleware.py</a></td>
+                <td>18</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="22 22">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_migrations_0001_initial_py.html">hc/accounts/migrations/0001_initial.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_migrations_0002_profile_ping_log_limit_py.html">hc/accounts/migrations/0002_profile_ping_log_limit.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_migrations_0003_profile_token_py.html">hc/accounts/migrations/0003_profile_token.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_migrations_0004_profile_api_key_py.html">hc/accounts/migrations/0004_profile_api_key.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_migrations_0005_auto_20160509_0801_py.html">hc/accounts/migrations/0005_auto_20160509_0801.py</a></td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 7">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_migrations_0006_profile_current_team_py.html">hc/accounts/migrations/0006_profile_current_team.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_migrations___init___py.html">hc/accounts/migrations/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_models_py.html">hc/accounts/models.py</a></td>
+                <td>59</td>
+                <td>2</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="57 59">97%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_urls_py.html">hc/accounts/urls.py</a></td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 3">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_accounts_views_py.html">hc/accounts/views.py</a></td>
+                <td>191</td>
+                <td>48</td>
+                <td>0</td>
+                
+                <td>73</td>
+                <td>16</td>
+                
+                <td class="right" data-ratio="190 264">72%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api___init___py.html">hc/api/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_admin_py.html">hc/api/admin.py</a></td>
+                <td>131</td>
+                <td>62</td>
+                <td>0</td>
+                
+                <td>42</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="77 173">45%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_decorators_py.html">hc/api/decorators.py</a></td>
+                <td>55</td>
+                <td>5</td>
+                <td>0</td>
+                
+                <td>22</td>
+                <td>4</td>
+                
+                <td class="right" data-ratio="68 77">88%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management___init___py.html">hc/api/management/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands___init___py.html">hc/api/management/commands/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands_ensuretriggers_py.html">hc/api/management/commands/ensuretriggers.py</a></td>
+                <td>23</td>
+                <td>7</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>3</td>
+                
+                <td class="right" data-ratio="19 29">66%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands_prunechecks_py.html">hc/api/management/commands/prunechecks.py</a></td>
+                <td>10</td>
+                <td>10</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 10">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands_pruneemails_py.html">hc/api/management/commands/pruneemails.py</a></td>
+                <td>10</td>
+                <td>10</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 10">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands_prunepings_py.html">hc/api/management/commands/prunepings.py</a></td>
+                <td>16</td>
+                <td>16</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 18">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands_prunepingsslow_py.html">hc/api/management/commands/prunepingsslow.py</a></td>
+                <td>19</td>
+                <td>19</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 23">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands_sendalerts_py.html">hc/api/management/commands/sendalerts.py</a></td>
+                <td>44</td>
+                <td>30</td>
+                <td>0</td>
+                
+                <td>12</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 56">25%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_management_commands_sendreports_py.html">hc/api/management/commands/sendreports.py</a></td>
+                <td>40</td>
+                <td>40</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 46">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0001_initial_py.html">hc/api/migrations/0001_initial.py</a></td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 7">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0002_auto_20150616_0732_py.html">hc/api/migrations/0002_auto_20150616_0732.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0003_auto_20150616_1249_py.html">hc/api/migrations/0003_auto_20150616_1249.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0004_auto_20150616_1319_py.html">hc/api/migrations/0004_auto_20150616_1319.py</a></td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 7">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0005_auto_20150630_2021_py.html">hc/api/migrations/0005_auto_20150630_2021.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0006_check_grace_py.html">hc/api/migrations/0006_check_grace.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0007_ping_py.html">hc/api/migrations/0007_ping.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0008_auto_20150801_1213_py.html">hc/api/migrations/0008_auto_20150801_1213.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0009_auto_20150801_1250_py.html">hc/api/migrations/0009_auto_20150801_1250.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0010_channel_py.html">hc/api/migrations/0010_channel.py</a></td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 7">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0011_notification_py.html">hc/api/migrations/0011_notification.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0012_auto_20150930_1922_py.html">hc/api/migrations/0012_auto_20150930_1922.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0013_auto_20151001_2029_py.html">hc/api/migrations/0013_auto_20151001_2029.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0014_auto_20151019_2039_py.html">hc/api/migrations/0014_auto_20151019_2039.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0015_auto_20151022_1008_py.html">hc/api/migrations/0015_auto_20151022_1008.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0016_auto_20151030_1107_py.html">hc/api/migrations/0016_auto_20151030_1107.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0017_auto_20151117_1032_py.html">hc/api/migrations/0017_auto_20151117_1032.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0018_remove_ping_body_py.html">hc/api/migrations/0018_remove_ping_body.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0019_check_tags_py.html">hc/api/migrations/0019_check_tags.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0020_check_n_pings_py.html">hc/api/migrations/0020_check_n_pings.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0021_ping_n_py.html">hc/api/migrations/0021_ping_n.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0022_auto_20160130_2042_py.html">hc/api/migrations/0022_auto_20160130_2042.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0023_auto_20160131_1919_py.html">hc/api/migrations/0023_auto_20160131_1919.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0024_auto_20160203_2227_py.html">hc/api/migrations/0024_auto_20160203_2227.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0025_auto_20160216_1214_py.html">hc/api/migrations/0025_auto_20160216_1214.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations_0026_auto_20160415_1824_py.html">hc/api/migrations/0026_auto_20160415_1824.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_migrations___init___py.html">hc/api/migrations/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_models_py.html">hc/api/models.py</a></td>
+                <td>177</td>
+                <td>47</td>
+                <td>0</td>
+                
+                <td>48</td>
+                <td>3</td>
+                
+                <td class="right" data-ratio="145 225">64%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_schemas_py.html">hc/api/schemas.py</a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1 1">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_transports_py.html">hc/api/transports.py</a></td>
+                <td>111</td>
+                <td>74</td>
+                <td>0</td>
+                
+                <td>28</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="37 139">27%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_urls_py.html">hc/api/urls.py</a></td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 3">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_api_views_py.html">hc/api/views.py</a></td>
+                <td>81</td>
+                <td>9</td>
+                <td>0</td>
+                
+                <td>26</td>
+                <td>8</td>
+                
+                <td class="right" data-ratio="90 107">84%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front___init___py.html">hc/front/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_admin_py.html">hc/front/admin.py</a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1 1">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_forms_py.html">hc/front/forms.py</a></td>
+                <td>28</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="32 32">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_migrations___init___py.html">hc/front/migrations/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_models_py.html">hc/front/models.py</a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1 1">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_templatetags___init___py.html">hc/front/templatetags/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_templatetags_hc_extras_py.html">hc/front/templatetags/hc_extras.py</a></td>
+                <td>23</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="31 31">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_urls_py.html">hc/front/urls.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_front_views_py.html">hc/front/views.py</a></td>
+                <td>299</td>
+                <td>71</td>
+                <td>0</td>
+                
+                <td>88</td>
+                <td>11</td>
+                
+                <td class="right" data-ratio="285 387">74%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_lib___init___py.html">hc/lib/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_lib_badges_py.html">hc/lib/badges.py</a></td>
+                <td>24</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="26 26">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_lib_emails_py.html">hc/lib/emails.py</a></td>
+                <td>16</td>
+                <td>1</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 16">94%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments___init___py.html">hc/payments/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_admin_py.html">hc/payments/admin.py</a></td>
+                <td>8</td>
+                <td>1</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="9 10">90%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_context_processors_py.html">hc/payments/context_processors.py</a></td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 12">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_migrations_0001_initial_py.html">hc/payments/migrations/0001_initial.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_migrations_0002_subscription_plan_id_py.html">hc/payments/migrations/0002_subscription_plan_id.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_migrations___init___py.html">hc/payments/migrations/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_models_py.html">hc/payments/models.py</a></td>
+                <td>40</td>
+                <td>19</td>
+                <td>0</td>
+                
+                <td>8</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="22 48">46%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_urls_py.html">hc/payments/urls.py</a></td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 3">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_payments_views_py.html">hc/payments/views.py</a></td>
+                <td>102</td>
+                <td>77</td>
+                <td>0</td>
+                
+                <td>34</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="28 136">21%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_settings_py.html">hc/settings.py</a></td>
+                <td>46</td>
+                <td>3</td>
+                <td>0</td>
+                
+                <td>6</td>
+                <td>3</td>
+                
+                <td class="right" data-ratio="46 52">88%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_urls_py.html">hc/urls.py</a></td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 3">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="hc_wsgi_py.html">hc/wsgi.py</a></td>
+                <td>4</td>
+                <td>4</td>
+                <td>0</td>
+                
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 4">0%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="manage_py.html">manage.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td>2</td>
+                <td>1</td>
+                
+                <td class="right" data-ratio="7 8">88%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.3.4</a>,
+            created at 2017-02-15 15:23
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

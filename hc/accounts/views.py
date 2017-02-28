@@ -279,7 +279,6 @@ def switch_team(request, target_username):
 
     if not access_ok:
         return HttpResponseForbidden()
-
     request.user.profile.current_team = other_user.profile
     request.user.profile.save()
 
