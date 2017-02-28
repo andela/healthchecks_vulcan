@@ -93,12 +93,5 @@ class CreateCheckTestCase(BaseTestCase):
     def test_it_rejects_non_string_name(self):
         self.post({"api_key": "abc", "name": False},
                   expected_error="name is not a string")
-
-    def test_it_rejects_small_timeout(self):# Test for the 'timeout is too small
-        self.post({"api_key": "abc", "timeout": 0},expected_fragment="timeout is too small")
-
-    def test_it_rejects_large_timeout(self): #'timeout is too large'
-        self.post({"api_key": "abc", "timeout": 604801},expected_fragment="timeout is too large")
-
     ### Test for the assignment of channels
     ### Test for the 'timeout is too small' and 'timeout is too large' errors
