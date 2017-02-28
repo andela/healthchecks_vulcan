@@ -9,10 +9,12 @@ omit =
     #omit everthing in /Users
     */Users/*
     */tests/*
+    */migrations/*
+    */virtualenv/*
+    hc/test.py
     *virtualenv/*
     */env/*
 source =
-    .
 
 [report]
 ignore_errors = True
