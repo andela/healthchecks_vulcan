@@ -1,20 +1,25 @@
 # .coveragerc to control coverage.py
 [run]
 branch = True
-
-source =
-    .
-
 omit =
-# omit all tests
+    #omit anything in .local directory anywhere
+    */.local/*
+    #omit everything in /usr
+    */usr/*
+    #omit everthing in /Users
+    */Users/*
     */tests/*
     */migrations/*
     */virtualenv/*
     hc/test.py
+    *virtualenv/*
+    */env/*
+source =
 
 [report]
 ignore_errors = True
 
 [html]
 #Directory to hold html coverage report
+
 directory = coverage_html_report
