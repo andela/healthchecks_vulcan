@@ -51,6 +51,7 @@ class ListChecksTestCase(BaseTestCase):
         update_url = settings.SITE_ROOT + "/api/v1/checks/%s" % self.a1.code
         pause_url = update_url + "/pause"
         self.assertEqual(checks["Alice 1"]["pause_url"], pause_url)
+
         ### Assert the checks Alice 1 and Alice 2's timeout, grace, ping_url, status,
         ### last_ping, n_pings and pause_url
 
