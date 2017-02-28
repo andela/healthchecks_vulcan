@@ -1,0 +1,18 @@
+# .coveragerc to control coverage.py
+[run]
+branch = True
+
+source =
+    .
+
+omit =
+# omit all tests
+    */tests/*
+    hc/test.py
+
+[report]
+ignore_errors = True
+
+[html]
+#Directory to hold html coverage report
+directory = coverage_html_report
