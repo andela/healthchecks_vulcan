@@ -23,8 +23,8 @@ class LoginTestCase(TestCase):
         self.assertContains(link_confirmation, "Login Link Sent")
 
         ### Assert that a user was created
-        self.user_check = User.objects.filter(email="alice@example.org")
-        self.assertEqual(self.user_check[0].email, form["email"])
+        user_check = User.objects.filter(email="alice@example.org")
+        self.assertEqual(user_check[0].email, form["email"])
 
         # And email sent
         self.assertEqual(len(mail.outbox), 1)
