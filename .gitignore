@@ -7,3 +7,4 @@ static-collected
 .idea/*
 .DS_Store
 static/.DS_Store
+.idea/*
