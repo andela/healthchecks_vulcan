@@ -16,3 +16,6 @@ before_install:
 after_success:
     -coveralls
 cache: pip
+
+notifications:
+  slack: andela:AHjAfdwCGbFbv4W2ftGd6dES
