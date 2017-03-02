@@ -128,9 +128,12 @@ USE_TZ = True
 SITE_ROOT = os.environ.get('SITE_ROOT')
 if SITE_ROOT:
     PING_ENDPOINT = SITE_ROOT + "/ping/"
+else:
+    # Default to localhost
+    PING_ENDPOINT = "http://localhost:8000/ping/"
 PING_EMAIL_DOMAIN = HOST
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [os.pat h.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -169,9 +172,13 @@ if os.environ.get('HEROKU'):
     # Allow all host headers
     ALLOWED_HOSTS = ['*']
 
-    EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS"))
-    EMAIL_HOST = os.environ.get("EMAIL_HOST")
-    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-    EMAIL_PORT = int(os.environ.get("EMAIL_PORT"))
+    try:
+        EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS"))
+        EMAIL_HOST = os.environ.get("EMAIL_HOST")
+        EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+        EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+        EMAIL_PORT = int(os.environ.get("EMAIL_PORT"))
+    except TypeError:
+        pass
+
 
