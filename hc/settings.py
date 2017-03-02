@@ -126,7 +126,8 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_ROOT = os.environ.get('SITE_ROOT')
-PING_ENDPOINT = SITE_ROOT + "/ping/"
+if SITE_ROOT:
+    PING_ENDPOINT = SITE_ROOT + "/ping/"
 PING_EMAIL_DOMAIN = HOST
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
