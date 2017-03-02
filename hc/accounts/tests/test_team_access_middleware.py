@@ -15,3 +15,5 @@ class TeamAccessMiddlewareTestCase(TestCase):
         self.assertEqual(r.status_code, 200)
 
         ### Assert the new Profile objects count
+        new_profile = User.objects.filter(email='ned@example.org').count()
+        self.assertEqual(new_profile, 1)

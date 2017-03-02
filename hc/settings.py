@@ -53,7 +53,8 @@ MIDDLEWARE = (
 
 AUTHENTICATION_BACKENDS = (
     'hc.accounts.backends.EmailBackend',
-    'hc.accounts.backends.ProfileBackend'
+    'hc.accounts.backends.ProfileBackend',
+    'django.contrib.auth.backends.ModelBackend'
 )
 
 ROOT_URLCONF = 'hc.urls'
