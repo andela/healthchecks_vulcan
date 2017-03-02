@@ -3,22 +3,14 @@ machine:
     - cd /opt/circleci/.pyenv; git pull
   environment:
     # See note about config.database.yml below.
-    DATABASE_URL: postgres://postgres@127.0.0.1:5433/test_database
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+    HOST: localhost
+    SITE_ROOT: http://localhost:8000
   python:
     version: 3.6.0
+
 database:
-  override:
-    # This next line prevents Circle from automatically overwriting
-    # config/database.yml with one pointing at Postgres 9.4.
-    - true
 
-dependencies:
-  override:
-    # Just to be 100% certian you are using 9.5, and save a bit of memory.
-    - sudo service postgresql stop 9.4
 
-    # The 9.4 instance has been configured to work with Docker. Just
-    # copy that over to 9.5 and restart.
-    - sudo cp -v /etc/postgresql/9.{4,5}/main/pg_hba.conf && sudo service postgresql restart 9.5
 
 
