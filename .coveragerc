@@ -7,20 +7,15 @@ omit =
     */.local/*
     #omit everything in /usr
     */usr/*
-    #omit everthing in /Users
-    */Users/*
     */tests/*
     */migrations/*
-    */virtualenv/*
+    */virtualenvs/*
     hc/test.py
-    *virtualenv/*
     */env/*
-    #omit everthing in /Users   
-    */Users/*
 
 source =
+    hc
 
-omit =
 [report]
 ignore_errors = True
 
