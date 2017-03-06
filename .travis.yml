@@ -4,13 +4,23 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
+
+services:
+    - postgresql
+
 install:
     - pip install -r requirements.txt
     - pip install braintree coveralls mock mysqlclient
 env:
-  - DB=postgres
+    - DB=postgres
+    - HOST=localhost
+    - SITE_ROOT=http://localhost:8000
+    - DATABASE_URL=postgres://postgres@localhost/mydb
+
+before_script:
+    - psql -c "CREATE DATABASE mydb;" -U postgres
 script:
-  - coverage run manage.py test
+    - coverage run manage.py test
 before_install:
     - pip install coveralls
 after_success:
