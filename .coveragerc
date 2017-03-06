@@ -1,21 +1,20 @@
 # .coveragerc to control coverage.py
 [run]
 branch = True
+
 omit =
     #omit anything in .local directory anywhere
     */.local/*
     #omit everything in /usr
     */usr/*
-    #omit everthing in /Users
-    */Users/*
     */tests/*
     */migrations/*
-    */virtualenv/*
+    */virtualenvs/*
     hc/test.py
-    *virtualenv/*
     */env/*
-source =
 
+source =
+    hc
 [report]
 ignore_errors = True
 
