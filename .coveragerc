@@ -2,7 +2,7 @@
 [run]
 branch = True
 
-omit = 
+omit =
     #omit anything in .local directory anywhere
     */.local/*
     #omit everything in /usr
@@ -15,7 +15,6 @@ omit =
 
 source =
     hc
-
 [report]
 ignore_errors = True
 
@@ -23,5 +22,3 @@ ignore_errors = True
 #Directory to hold html coverage report
 
 directory = coverage_html_report
-
-

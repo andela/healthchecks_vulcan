@@ -59,3 +59,4 @@ class MyChecksTestCase(BaseTestCase):
         # Mobile
         self.assertContains(r, "label-warning")
         
+
