@@ -136,6 +136,7 @@ STATICFILES_FINDERS = (
 COMPRESS_OFFLINE = True
 
 EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
+DJMAIL_REAL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Slack integration -- override these in dev_settings
 SLACK_CLIENT_ID = None
@@ -168,7 +169,6 @@ if os.environ.get('HEROKU'):
     ALLOWED_HOSTS = ['*']
 
     # Configure email
-    DJMAIL_REAL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS"))
     EMAIL_HOST = os.environ.get("EMAIL_HOST")
     EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
