@@ -6,13 +6,10 @@ omit =
     */.local/*
     #omit everything in /usr
     */usr/*
-    #omit everthing in /Users
-    */Users/*
     */tests/*
     */migrations/*
-    */virtualenv/*
+    */virtualenvs/*
     hc/test.py
-    *virtualenv/*
     */env/*
 source =
 
