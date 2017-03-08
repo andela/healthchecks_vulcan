@@ -33,7 +33,7 @@ def my_checks(request):
     checks = list(q)
 
     counter = Counter()
-    down_tags, grace_tags = set(), set()
+    down_tags, grace_tags, often_tag = set(), set(), set()
     for check in checks:
         status = check.get_status()
         for tag in check.tags_list():
@@ -44,8 +44,12 @@ def my_checks(request):
 
             if status == "down":
                 down_tags.add(tag)
+            elif status == "often":
+                often_tag.add(tag)
+            #     add email
             elif check.in_grace_period():
                 grace_tags.add(tag)
+
 
     ctx = {
         "page": "checks",
@@ -54,6 +58,7 @@ def my_checks(request):
         "tags": counter.most_common(),
         "down_tags": down_tags,
         "grace_tags": grace_tags,
+        "often_tag": often_tag,
         "ping_endpoint": settings.PING_ENDPOINT
     }
 
@@ -511,7 +516,7 @@ def add_pushover(request):
             return HttpResponseForbidden()
 
         # Validate priority
-        if request.GET["prio"] not in ("-2", "-1", "0", "1", "2"):
+        if request.GET["prior"] not in ("-2", "-1", "0", "1", "2"):
             return HttpResponseBadRequest()
 
         # All looks well--

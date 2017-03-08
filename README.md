@@ -129,7 +129,7 @@ and the email configuration in `hc/local_settings.py` looks as follows:
 
 ## Sending Status Notifications
 
-healtchecks comes with a `sendalerts` management command, which continuously
+healthchecks comes with a `sendalerts` management command, which continuously
 polls database for any checks changing state, and sends out notifications as
 needed. Within an activated virtualenv, you can manually run
 the `sendalerts` command like so:
