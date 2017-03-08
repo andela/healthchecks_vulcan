@@ -23,6 +23,9 @@ def ping(request, code):
 
     check.n_pings = F("n_pings") + 1
     check.last_ping = timezone.now()
+    # is_often = check.run_too_often()
+    # if is_often:
+    #     check.status = "often"
     if check.status in ("new", "paused"):
         check.status = "up"
 
@@ -110,6 +113,10 @@ def badge(request, username, signature, tag):
         if check.get_status() == "down":
             status = "down"
             break
+
+        if check.get_status() == "often":
+            status = "often"
+
 
     svg = get_badge_svg(tag, status)
     return HttpResponse(svg, content_type="image/svg+xml")
