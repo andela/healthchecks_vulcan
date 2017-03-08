@@ -516,7 +516,7 @@ def add_pushover(request):
             return HttpResponseForbidden()
 
         # Validate priority
-        if request.GET["prior"] not in ("-2", "-1", "0", "1", "2"):
+        if request.GET["prio"] not in ("-2", "-1", "0", "1", "2"):
             return HttpResponseBadRequest()
 
         # All looks well--
