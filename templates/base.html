@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,6 +83,10 @@
                     </li>
 
                 {% endif %}
+
+                <li {% if page == 'blog' %} class="active" {% endif %}>
+                    <a href="{% url 'hc-blog' %}">Blog</a>
+                </li>
 
 
                 {% if show_pricing %}

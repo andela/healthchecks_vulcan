@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}About - healthchecks.io{% endblock %}
+
+{% block containers %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+  {% if user.is_authenticated %}
+          <div style="text-align:center">
+          <a href="{% url 'post_new' %}" class="btn btn-primary btn-lg" style="text-decoration:none"><span class="glyphicon glyphicon-plus"></span>Add Blog Post</a>
+            <h1><center><a href="" style="text-decoration:none">My Posts</a></center</h1>
+          </div>
+  {% endif %}
+
+  {% for post in posts %}
+      <div class="post">
+      </br>
+          <div class="date">
+              <h4><p><b>Published: {{ post.published_date }} </b></p></h4>
+          </div>
+          <h2><a href="{% url 'post_detail' pk=post.pk %}" style="text-decoration:none">{{ post.title }} </a></h2>
+          <p>{{ post.text|linebreaksbr }}</p>
+      </div>
+  {% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
