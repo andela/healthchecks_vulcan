@@ -17,7 +17,8 @@ STATUSES = (
     ("up", "Up"),
     ("down", "Down"),
     ("new", "New"),
-    ("paused", "Paused")
+    ("paused", "Paused"),
+    ("often", "Often")
 )
 DEFAULT_TIMEOUT = td(days=1)
 DEFAULT_GRACE = td(hours=1)
@@ -86,7 +87,11 @@ class Check(models.Model):
 
         now = timezone.now()
 
-        if self.last_ping + self.timeout + self.grace > now:
+        # ping runs early
+        if self.last_ping + self.timeout - self.grace > now:
+            return "often"
+        next_ping = self.last_ping + self.timeout + self.grace > now
+        if next_ping:
             return "up"
 
         return "down"

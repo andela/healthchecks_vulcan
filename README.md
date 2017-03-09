@@ -111,7 +111,7 @@ configuration from environment variables like so:
 
 ## Sending Emails
 
-healthchecks must be able to send email messages, so it can send out login
+healtchecks must be able to send email messages, so it can send out login
 links and alerts to users. You will likely need to tweak email configuration
 before emails will work. healthchecks uses
 [djmail](http://bameda.github.io/djmail/) for sending emails asynchronously.
@@ -129,7 +129,7 @@ and the email configuration in `hc/local_settings.py` looks as follows:
 
 ## Sending Status Notifications
 
-healtchecks comes with a `sendalerts` management command, which continuously
+healthchecks comes with a `sendalerts` management command, which continuously
 polls database for any checks changing state, and sends out notifications as
 needed. Within an activated virtualenv, you can manually run
 the `sendalerts` command like so:
