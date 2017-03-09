@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from hc.blog.forms import PostForm
 from hc.blog.models import Post, Category
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 
 def post_list(request):
@@ -21,16 +22,17 @@ def post_list(request):
         all_posts.append(one_article)
     return render(request, 'blog/post_list.html', {'posts': all_posts})
 
-
+@login_required
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
 @login_required
+@user_passes_test(lambda u: u.is_superuser)
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST or None)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -43,6 +45,7 @@ def post_new(request):
 
 
 @login_required
+@user_passes_test(lambda u: u.is_superuser)
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
