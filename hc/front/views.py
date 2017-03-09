@@ -46,7 +46,6 @@ def my_checks(request):
                 down_tags.add(tag)
             elif status == "often":
                 often_tag.add(tag)
-            #     add email
             elif check.in_grace_period():
                 grace_tags.add(tag)
 
