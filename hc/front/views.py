@@ -49,7 +49,6 @@ def my_checks(request):
             elif check.in_grace_period():
                 grace_tags.add(tag)
 
-
     ctx = {
         "page": "checks",
         "checks": checks,

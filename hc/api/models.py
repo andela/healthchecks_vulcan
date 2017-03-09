@@ -19,7 +19,6 @@ STATUSES = (
     ("new", "New"),
     ("paused", "Paused"),
     ("often", "Often")
-
 )
 DEFAULT_TIMEOUT = td(days=1)
 DEFAULT_GRACE = td(hours=1)
@@ -91,9 +90,7 @@ class Check(models.Model):
         # ping runs early
         if self.last_ping + self.timeout - self.grace > now:
             return "often"
-
         next_ping = self.last_ping + self.timeout + self.grace > now
-
         if next_ping:
             return "up"
 
@@ -106,12 +103,6 @@ class Check(models.Model):
         up_ends = self.last_ping + self.timeout
         grace_ends = up_ends + self.grace
         return up_ends < timezone.now() < grace_ends
-
-    # def run_too_often(self):
-    #     now = timezone.now()
-    #
-    #     if now - (self.timeout + self.grace) > self.last_ping:
-    #         return True
 
     def assign_all_channels(self):
         if self.user:
