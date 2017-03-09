@@ -14,7 +14,7 @@ def post_list(request):
     for article in posts:
         one_article = {
             "title":article.title,
-            "text":article.text[:100]+"...",
+            "text":article.text,
             "published_date":article.published_date,
             "pk":article.pk
         }
