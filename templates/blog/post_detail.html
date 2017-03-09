@@ -13,7 +13,7 @@
         {{ post.published_date }}
     </div>
 {% endif %}
-{% if user.is_authenticated %}
+{% if user.is_superuser %}
 <a class="btn btn-primary btn-lg" href="{% url 'post_edit' pk=post.pk %}" style="position:absolute;right:11px"><span class="glyphicon glyphicon-pencil"></span>Edit Post</a>
 {% endif %}
 <h1>{{ post.title }}</h1>
