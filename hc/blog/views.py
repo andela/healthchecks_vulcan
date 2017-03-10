@@ -6,26 +6,31 @@ from hc.blog.forms import PostForm
 from hc.blog.models import Post, Category
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def post_list(request):
     # Retrieve all posts from database and save to dictionary
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    all_posts = []
-    for article in posts:
-        one_article = {
-            "title":article.title,
-            "text":article.text,
-            "published_date":article.published_date,
-            "pk":article.pk
-        }
-        all_posts.append(one_article)
-    return render(request, 'blog/post_list.html', {'posts': all_posts})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    paginator = Paginator(posts, 10)
 
-@login_required
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
+
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
