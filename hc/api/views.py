@@ -62,8 +62,6 @@ def checks(request):
             check.timeout = td(seconds=request.json["timeout"])
         if "grace" in request.json:
             check.grace = td(seconds=request.json["grace"])
-        if "nag" in request.json:
-            check.nag = td(seconds=request.json["nag"])
 
         check.save()
 
@@ -111,6 +109,9 @@ def badge(request, username, signature, tag):
 
         if check.get_status() == "down":
             status = "down"
+
+        if check.get_status() == "nag":
+            status = "nag"
             break
 
     svg = get_badge_svg(tag, status)
