@@ -16,7 +16,7 @@ from hc.lib import emails
 STATUSES = (
     ("up", "Up"),
     ("down", "Down"),
-    ("new", "New"),
+    ("nag", "Nag"),
     ("paused", "Paused")
 )
 DEFAULT_TIMEOUT = td(days=1)
@@ -49,7 +49,7 @@ class Check(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     timeout = models.DurationField(default=DEFAULT_TIMEOUT)
     grace = models.DurationField(default=DEFAULT_GRACE)
-    nag = models.DurationField(default=DEFAULT_NAG)
+    nag_interval = models.DurationField(default=DEFAULT_NAG)
     n_pings = models.IntegerField(default=0)
     last_ping = models.DateTimeField(null=True, blank=True)
     alert_after = models.DateTimeField(null=True, blank=True, editable=False)
@@ -71,7 +71,7 @@ class Check(models.Model):
         return "%s@%s" % (self.code, settings.PING_EMAIL_DOMAIN)
 
     def send_alert(self):
-        if self.status not in ("up", "down"):
+        if self.status not in ("up", "down", "nag"):
             raise NotImplementedError("Unexpected status: %s" % self.status)
 
         errors = []
@@ -90,6 +90,9 @@ class Check(models.Model):
 
         if self.last_ping + self.timeout + self.grace > now:
             return "up"
+
+        elif self.last_ping + self.timeout + self.grace + self.nag_interval > now:
+            return "nag"
 
         return "down"
 
@@ -119,6 +122,7 @@ class Check(models.Model):
             "tags": self.tags,
             "timeout": int(self.timeout.total_seconds()),
             "grace": int(self.grace.total_seconds()),
+            "nag_interval": int(self.grace.total_seconds()),
             "n_pings": self.n_pings,
             "status": self.get_status()
         }
