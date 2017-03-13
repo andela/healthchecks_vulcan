@@ -1,3 +1,4 @@
+4
 import logging
 import time
 
@@ -12,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 class Command(BaseCommand):
-    help = 'Sends UP/DOWN email alerts'
+    help = 'Sends UP/DOWN/NAG email alerts'
 
     def handle_many(self):
         """ Send alerts for many checks simultaneously. """
@@ -21,6 +22,7 @@ class Command(BaseCommand):
         now = timezone.now()
         going_down = query.filter(alert_after__lt=now, status="up")
         going_up = query.filter(alert_after__gt=now, status="down")
+        #going_nag = query.filter(alert_after__lt=now, status="nag")
         # Don't combine this in one query so Postgres can query using index:
         checks = list(going_down.iterator()) + list(going_up.iterator())
         if not checks:
@@ -52,7 +54,14 @@ class Command(BaseCommand):
             self.stdout.write("ERROR: %s %s %s\n" % (ch.kind, ch.value, error))
 
         connection.close()
-        return True
+        return True  
+           
+    def handle_nag(self, check):
+        check.status = check.get_status()
+        check.save()
+
+        if check.status == "nag":
+            check.sendalerts()
 
     def handle(self, *args, **options):
         self.stdout.write("sendalerts is now running")
