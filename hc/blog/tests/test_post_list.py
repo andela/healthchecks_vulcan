@@ -11,7 +11,5 @@ class TestPostList(BaseTestCase):
         blog_page = self.client.get("/blog/")
         assert blog_page.status_code == 200
 
-    def test_post_url_param_same_as_database(self):
-        pass
 
 
