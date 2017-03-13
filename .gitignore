@@ -8,3 +8,4 @@ static-collected
 static/.DS_Store
 *migrations/*
 hc/*/migrations/*
+dev_settings.py
