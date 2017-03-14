@@ -19,6 +19,8 @@ class MyChecksTestCase(BaseTestCase):
 
     def test_it_shows_green_check(self):
         self.check.last_ping = timezone.now()
+        self.check.timeout =  td(seconds=60)
+        self.check.grace = td(seconds=60)
         self.check.status = "up"
         self.check.save()
 
@@ -58,3 +60,5 @@ class MyChecksTestCase(BaseTestCase):
 
         # Mobile
         self.assertContains(r, "label-warning")
+        
+    

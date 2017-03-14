@@ -12,14 +12,15 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 import os
 import warnings
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-HOST = "localhost"
-SECRET_KEY = "---"
+HOST = os.environ.get('HOST', 'localhost')
+SECRET_KEY = "andelVulca9wd"
 DEBUG = True
 ALLOWED_HOSTS = []
-DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
+FROM_EMAIL = 'healthchecks@example.org'
 USE_PAYMENTS = False
 
 
@@ -37,7 +38,8 @@ INSTALLED_APPS = (
     'hc.accounts',
     'hc.api',
     'hc.front',
-    'hc.payments'
+    'hc.payments',
+    'hc.blog',
 )
 
 MIDDLEWARE = (
@@ -53,7 +55,8 @@ MIDDLEWARE = (
 
 AUTHENTICATION_BACKENDS = (
     'hc.accounts.backends.EmailBackend',
-    'hc.accounts.backends.ProfileBackend'
+    'hc.accounts.backends.ProfileBackend',
+    'django.contrib.auth.backends.ModelBackend'
 )
 
 ROOT_URLCONF = 'hc.urls'
@@ -112,7 +115,7 @@ if os.environ.get("DB") == "mysql":
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -120,7 +123,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SITE_ROOT = "http://localhost:8000"
+SITE_ROOT = os.environ.get('SITE_ROOT', 'http://localhost:8000')
 PING_ENDPOINT = SITE_ROOT + "/ping/"
 PING_EMAIL_DOMAIN = HOST
 STATIC_URL = '/static/'
@@ -132,24 +135,47 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 COMPRESS_OFFLINE = True
+if DEBUG :
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
 
-EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
+DJMAIL_REAL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# Slack integration -- override these in local_settings
+# Slack integration -- override these in dev_settings
 SLACK_CLIENT_ID = None
 SLACK_CLIENT_SECRET = None
 
-# Pushover integration -- override these in local_settings
+# Pushover integration -- override these in dev_settings
 PUSHOVER_API_TOKEN = None
 PUSHOVER_SUBSCRIPTION_URL = None
 PUSHOVER_EMERGENCY_RETRY_DELAY = 300
 PUSHOVER_EMERGENCY_EXPIRATION = 86400
 
-# Pushbullet integration -- override these in local_settings
+# Pushbullet integration -- override these in dev_settings
 PUSHBULLET_CLIENT_ID = None
 PUSHBULLET_CLIENT_SECRET = None
 
-if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
-    from .local_settings import *
+if os.path.exists(os.path.join(BASE_DIR, "hc/dev_settings.py")):
+    from .dev_settings import *
 else:
-    warnings.warn("local_settings.py not found, using defaults")
+    warnings.warn("dev_settings.py not found, using defaults")
+
+if os.environ.get('HEROKU'):
+
+    # Parse database configuration from $DATABASE_URL
+    DATABASES['default'] = dj_database_url.config()
+
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    # Allow all host headers
+    ALLOWED_HOSTS = ['*']
+
+    # Configure email
+    EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
+    EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS"))
+    EMAIL_HOST = os.environ.get("EMAIL_HOST")
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT"))
