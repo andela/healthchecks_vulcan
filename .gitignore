@@ -2,9 +2,10 @@ __pycache__/
 *.pyc
 .coverage
 hc.sqlite
-hc/dev_settings.py
 static-collected
 .idea/*
 .DS_Store
 static/.DS_Store
-.idea/*
+*migrations/*
+hc/*/migrations/*
+dev_settings.py

@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'hc.accounts',
     'hc.api',
     'hc.front',
-    'hc.payments'
+    'hc.payments',
+    'hc.blog',
 )
 
 MIDDLEWARE = (
@@ -114,7 +115,7 @@ if os.environ.get("DB") == "mysql":
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -134,8 +135,11 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 COMPRESS_OFFLINE = True
+if DEBUG :
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
 
-EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
 DJMAIL_REAL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Slack integration -- override these in dev_settings
@@ -169,9 +173,9 @@ if os.environ.get('HEROKU'):
     ALLOWED_HOSTS = ['*']
 
     # Configure email
+    EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
     EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS"))
     EMAIL_HOST = os.environ.get("EMAIL_HOST")
     EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
     EMAIL_PORT = int(os.environ.get("EMAIL_PORT"))
-

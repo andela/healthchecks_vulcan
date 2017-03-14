@@ -1,14 +1,11 @@
-machine:                                                                                                                                                                 
-  pre:                                                                                                                                                                   
+machine:
+  pre:
     - cd /opt/circleci/.pyenv; git pull
   environment:
     # See note about config.database.yml below.
     DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
     HOST: localhost
     SITE_ROOT: http://localhost:8000
+    DB: postgres
   python:
     version: 3.6.0
-
-
-
-

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}About - healthchecks.io{% endblock %}
+
+{% block containers %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+<div class="post">
+  {% if post.published_date %}
+    <div class="date">
+        {{ post.published_date }}
+    </div>
+{% endif %}
+{% if user.is_superuser %}
+<a class="btn btn-primary btn-lg" href="{% url 'post_edit' pk=post.pk %}" style="position:absolute;right:11px"><span class="glyphicon glyphicon-pencil"></span>Edit Post</a>
+{% endif %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.text|linebreaksbr }}</p>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
