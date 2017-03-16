@@ -54,8 +54,6 @@ class Command(BaseCommand):
         connection.close()
         return True
 
-
-
     def handle(self, *args, **options):
         self.stdout.write("sendalerts is now running")
 
